@@ -1,5 +1,4 @@
 import 'package:faerun/src/internal.dart';
-import 'package:faerun/src/proficiency_bonus.dart';
 import 'package:meta/meta.dart';
 
 /// A rating of the threat a monster poses to a group of four player characters.
