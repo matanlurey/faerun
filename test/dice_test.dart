@@ -86,4 +86,24 @@ void main() {
       });
     });
   });
+
+  test('Dice * n should return a DiceNotation', () {
+    final dice = Dice.d6 * 2;
+    check(dice).equals(DiceNotation(Dice.d6, amount: 2));
+  });
+
+  test('Dice + n should return a DiceNotation', () {
+    final dice = Dice.d6 + 3;
+    check(dice).equals(DiceNotation(Dice.d6, amount: 1, modifier: 3));
+  });
+
+  test('DiceModifier + n should return a new DiceNotation', () {
+    final notation = DiceNotation(Dice.d6, amount: 2);
+    check(notation + 3).equals(DiceNotation(Dice.d6, amount: 2, modifier: 3));
+  });
+
+  test('DiceModifier - n should return a new DiceNotation', () {
+    final notation = DiceNotation(Dice.d6, amount: 2);
+    check(notation - 3).equals(DiceNotation(Dice.d6, amount: 2, modifier: -3));
+  });
 }

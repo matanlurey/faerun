@@ -56,6 +56,9 @@ enum Ability {
     );
   }
 
+  /// Creates an ability score for this ability with the given [score].
+  AbilityScore call(int score) => AbilityScore(this, score);
+
   /// Three-letter abbreviation of the ability, in lowercase.
   ///
   /// For example, `Ability.strength.abbreviation` returns `'str'`.

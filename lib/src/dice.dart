@@ -47,6 +47,20 @@ enum Dice {
 
   /// The number of sides on the die.
   final int sides;
+
+  /// Creates a dice notation of [amount] dice with this die and no modifier.
+  ///
+  /// This method is equivalent to `DiceNotation(this, amount: amount)`.
+  DiceNotation operator *(int amount) {
+    return DiceNotation(this, amount: amount);
+  }
+
+  /// Creates a dice notation of one die with this die and the given [modifier].
+  ///
+  /// This method is equivalent to `DiceNotation(this, amount: 1, modifier: modifier)`.
+  DiceNotation operator +(int modifier) {
+    return DiceNotation(this, amount: 1, modifier: modifier);
+  }
 }
 
 /// A notation for dice expressions.
@@ -189,6 +203,20 @@ final class DiceNotation {
 
   /// A modifier to apply to the result.
   final int modifier;
+
+  /// Creates a new dice notation with the modifier increased by [value].
+  ///
+  /// If [value] is negative, the modifier is decreased instead.
+  DiceNotation operator +(int value) {
+    return DiceNotation._(dice, amount: amount, modifier: modifier + value);
+  }
+
+  /// Creates a new dice notation with the modifier decreased by [value].
+  ///
+  /// If [value] is negative, the modifier is increased instead.
+  DiceNotation operator -(int value) {
+    return DiceNotation._(dice, amount: amount, modifier: modifier - value);
+  }
 
   @override
   bool operator ==(Object other) {
