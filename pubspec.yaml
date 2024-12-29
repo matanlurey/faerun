@@ -1,0 +1,17 @@
+name: faerun
+
+description: |-
+  A description of the package.
+
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  meta: ^1.16.0
+
+dev_dependencies:
+  checks: ^0.3.0
+  oath: ^0.2.2
+  test: ^1.25.14

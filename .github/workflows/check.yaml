@@ -1,0 +1,27 @@
+name: Check
+
+on:
+  # Post-submit.
+  push:
+    branches: [ main ]
+
+  # Pre-submit.
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - uses: dart-lang/setup-dart@v1.6.4
+      - run: dart pub get
+      - run: ./chore check
+      - run: ./chore test
+      - run: ./chore coverage -- -P coverage
+      # - uses: codecov/codecov-action@v4.6.0
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     flags: lodim
+      #     file: packages/lodim/coverage/lcov.info
+      #     fail_ci_if_error: true
