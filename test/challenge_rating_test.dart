@@ -22,12 +22,12 @@ void main() {
 
   test('should be equivalent to itself', () {
     final rating = ChallengeRating(1);
-    check(rating).equivalentTo(ChallengeRating(1));
+    check(rating).isEquivalentTo(ChallengeRating(1));
   });
 
   test('has a toString representation', () {
-    final rating = ChallengeRating(1);
-    check(rating).hasToString.equals('ChallengeRating(1)');
+    check(ChallengeRating(1)).hasToString.equals('ChallengeRating(1)');
+    check(ChallengeRating(1, 4)).hasToString.equals('ChallengeRating(1/4)');
   });
 
   test('should be ordered by value', () {
@@ -42,5 +42,12 @@ void main() {
       ChallengeRating(1, 2),
       ChallengeRating(1),
     ]);
+  });
+
+  test('returns as a proficiency bonus', () {
+    final rating = ChallengeRating(1);
+    check(rating)
+        .has((a) => a.proficiencyBonus, 'proficiencyBonus')
+        .equals(ProficiencyBonus(2));
   });
 }

@@ -26,6 +26,45 @@ void main() {
     }
   });
 
+  test('tryByName', () {
+    final dice = Dice.tryByName('non-existent');
+    check(dice).isNull();
+  });
+
+  group('tryByName should return the dice with the name', () {
+    for (final dice in Dice.values) {
+      test('for ${dice.name}', () {
+        final result = Dice.tryByName(dice.name);
+        check(result).equals(dice);
+      });
+    }
+  });
+
+  test('byName should throw for non-existent dice', () {
+    check(() => Dice.byName('non-existent')).throws<ArgumentError>();
+  });
+
+  test('byName should return the dice with the name', () {
+    for (final dice in Dice.values) {
+      final result = Dice.byName(dice.name);
+      check(result).equals(dice);
+    }
+  });
+
+  test('ordered based on sides', () {
+    final dices = [
+      Dice.d12,
+      Dice.d6,
+      Dice.d20,
+    ]..sort();
+
+    check(dices).deepEquals([
+      Dice.d6,
+      Dice.d12,
+      Dice.d20,
+    ]);
+  });
+
   group('DiceNotation', () {
     test('should reject an amount of 0', () {
       check(() => DiceNotation(Dice.d6, amount: 0)).throws<RangeError>();
@@ -37,7 +76,7 @@ void main() {
 
     test('should be equivalent to itself', () {
       final notation = DiceNotation(Dice.d6, amount: 2, modifier: 3);
-      check(notation).equivalentTo(
+      check(notation).isEquivalentTo(
         DiceNotation(
           Dice.d6,
           amount: 2,

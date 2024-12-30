@@ -1,4 +1,5 @@
 import 'package:faerun/src/challenge_rating.dart';
+import 'package:faerun/src/level.dart';
 import 'package:meta/meta.dart';
 
 /// Reflects the impact that training has on the creature’s capabilities.
@@ -25,14 +26,22 @@ final class ProficiencyBonus implements Comparable<ProficiencyBonus> {
     RangeError.checkValueInInterval(value, 2, 9, 'value');
   }
 
-  /// Determines the proficiency bonus based on the given [ChallengeRating].
-  factory ProficiencyBonus.fromChallengeRating(ChallengeRating rating) {
-    final value = rating.value;
+  factory ProficiencyBonus._fromLevelOrChallengeValue(int value) {
     return switch (value) {
       <= 4 => ProficiencyBonus(2),
       >= 29 => ProficiencyBonus(9),
       _ => ProficiencyBonus((value - 1) ~/ 4 + 2),
     };
+  }
+
+  /// Determines the proficiency bonus based on the given [ChallengeRating].
+  factory ProficiencyBonus.fromChallengeRating(ChallengeRating rating) {
+    return ProficiencyBonus._fromLevelOrChallengeValue(rating.value.floor());
+  }
+
+  /// Determines the proficiency bonus based on the given player [Level].
+  factory ProficiencyBonus.fromLevel(Level level) {
+    return ProficiencyBonus._fromLevelOrChallengeValue(level.value);
   }
 
   /// Value of the proficiency bonus.

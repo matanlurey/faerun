@@ -1,6 +1,10 @@
 export 'src/ability.dart' show Ability, AbilityScore;
+export 'src/armor_class.dart' show ArmorClass;
 export 'src/challenge_rating.dart' show ChallengeRating;
 export 'src/circumstance.dart' show Circumstance;
 export 'src/dice.dart' show Dice, DiceNotation;
+export 'src/difficulty_class.dart' show DifficultyClass;
+export 'src/level.dart' show Level;
 export 'src/proficiency_bonus.dart' show ProficiencyBonus;
+export 'src/skill.dart' show Skill;
 export 'src/source.dart' show Source;

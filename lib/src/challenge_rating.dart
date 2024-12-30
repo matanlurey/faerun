@@ -1,7 +1,13 @@
-import 'package:faerun/src/internal.dart';
+import 'package:faerun/src/proficiency_bonus.dart';
 import 'package:meta/meta.dart';
+import 'package:quirk/quirk.dart';
 
 /// A rating of the threat a monster poses to a group of four player characters.
+///
+/// A challenge rating encapsulates the difficulty of a monster and provides
+/// a guaranteed valid range of values, as well as a [proficiencyBonus] that can
+/// be used to calculate bonuses when an ability check should include the
+/// monster's proficiency bonus.
 ///
 /// ## Equality
 ///
@@ -42,6 +48,11 @@ final class ChallengeRating implements Comparable<ChallengeRating> {
   ///
   /// This is calculated as `numerator / denominator`.
   double get value => numerator / denominator;
+
+  /// The proficiency bonus for the challenge rating.
+  ProficiencyBonus get proficiencyBonus {
+    return ProficiencyBonus.fromChallengeRating(this);
+  }
 
   @override
   int compareTo(ChallengeRating other) {

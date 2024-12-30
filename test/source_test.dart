@@ -15,7 +15,7 @@ void main() {
 
     test('should be equivalent to itself', () {
       final source = Source.latest('Latest');
-      check(source).equivalentTo(Source.latest('Latest'));
+      check(source).isEquivalentTo(Source.latest('Latest'));
     });
 
     test('should be represented in toString', () {
@@ -32,7 +32,7 @@ void main() {
 
     test('should be equivalent to itself', () {
       final source = Source('Explicit', version: 42);
-      check(source).equivalentTo(Source('Explicit', version: 42));
+      check(source).isEquivalentTo(Source('Explicit', version: 42));
     });
 
     test('should be represented in toString', () {
@@ -60,6 +60,6 @@ void main() {
       version: 1,
       url: Uri.parse('https://example.org'),
     );
-    check(source1).equivalentTo(source2);
+    check(source1).isEquivalentTo(source2);
   });
 }

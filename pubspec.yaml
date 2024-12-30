@@ -9,7 +9,9 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  collection: ^1.19.1
   meta: ^1.16.0
+  quirk: ^0.1.0
 
 dev_dependencies:
   checks: ^0.3.0

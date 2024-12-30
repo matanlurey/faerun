@@ -19,7 +19,7 @@ void main() {
 
   test('should be equivalent to itself', () {
     final bonus = ProficiencyBonus(2);
-    check(bonus).equivalentTo(ProficiencyBonus(2));
+    check(bonus).isEquivalentTo(ProficiencyBonus(2));
   });
 
   test('has a toString representation', () {

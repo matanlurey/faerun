@@ -1,8 +1,19 @@
-import 'package:faerun/src/internal.dart';
+import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
+import 'package:quirk/quirk.dart';
 
 /// Dice add randomness to the game and determine the outcome of many actions.
-enum Dice {
+///
+/// For display and serialization purposes, each die has a unique [name] and
+/// number of [sides]. The name is the same as the enum value, and the number
+/// of sides is the same as the enum value. Use [byName] and [bySides] to
+/// look up dice by name or number of sides.
+///
+/// ## Comparison
+///
+/// Dice are ordered based on their number of sides, with [d3] being the lowest
+/// and [d100] being the highest.
+enum Dice implements Comparable<Dice> {
   /// A 3-sided die.
   d3(3),
 
@@ -32,11 +43,19 @@ enum Dice {
   /// Returns the dice with the given number of [sides], if it exists.
   ///
   /// If no dice with the given number of sides exists, `null` is returned.
+  ///
+  /// This method is intended to be used with unvalidated input, such as user
+  /// input or data from an external source. If you know the input is valid,
+  /// consider using [bySides] instead.
   static Dice? tryBySides(int sides) {
     return values.firstWhereOrNull((die) => die.sides == sides);
   }
 
   /// Returns the dice with the given number of [sides].
+  ///
+  /// If you are unsure whether a die with the given number of sides exists,
+  /// consider using [tryBySides] instead which returns `null` if the die does
+  /// not exist.
   static Dice bySides(int sides) {
     final result = tryBySides(sides);
     if (result == null) {
@@ -45,8 +64,34 @@ enum Dice {
     return result;
   }
 
+  /// Returns the dice with the given [name], if it exists.
+  ///
+  /// If no dice with the given name exists, `null` is returned.
+  ///
+  /// This method is intended to be used with unvalidated input, such as user
+  /// input or data from an external source. If you know the input is valid,
+  /// consider using [byName] instead.
+  static Dice? tryByName(String name) {
+    return values.firstWhereOrNull((die) => die.name == name);
+  }
+
+  /// Returns the dice with the given [name].
+  ///
+  /// If you are unsure whether a die with the given name exists, consider using
+  /// [tryByName] instead which returns `null` if the die does not exist.
+  static Dice byName(String name) {
+    final result = tryByName(name);
+    if (result == null) {
+      throw ArgumentError.value(name, 'name', 'not a valid die name');
+    }
+    return result;
+  }
+
   /// The number of sides on the die.
   final int sides;
+
+  @override
+  int compareTo(Dice other) => sides.compareTo(other.sides);
 
   /// Creates a dice notation of [amount] dice with this die and no modifier.
   ///

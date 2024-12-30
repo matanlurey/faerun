@@ -8,7 +8,7 @@ extension ObjectChecks<T extends Object?> on Subject<T> {
   ///
   /// Two objects are considered equivalent if they are equal and have the same
   /// hash code.
-  void equivalentTo(T other) {
+  void isEquivalentTo(T other) {
     context.expect(() => prefixFirst('equals ', literal(other)), (actual) {
       if (actual != other) {
         return Rejection(which: ['are not equal']);

@@ -1,5 +1,5 @@
-import 'package:faerun/src/internal.dart';
 import 'package:meta/meta.dart';
+import 'package:quirk/quirk.dart';
 
 /// A source provides a canonical representation of game specifications.
 ///

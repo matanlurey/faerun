@@ -107,11 +107,28 @@ void main() {
   test('should be equal if they have the same ability and score', () {
     final a = AbilityScore(Ability.strength, 10);
     final b = AbilityScore(Ability.strength, 10);
-    check(a).equivalentTo(b);
+    check(a).isEquivalentTo(b);
   });
 
   test('has a toString representation', () {
     final score = AbilityScore(Ability.strength, 10);
     check(score).hasToString.equals('AbilityScore(Ability.strength, 10)');
+  });
+
+  test('should return the skills associated with the ability', () {
+    check({
+      for (final ability in Ability.values) ability: ability.skills,
+    }).deepEquals({
+      for (final ability in Ability.values)
+        ability: Skill.values.where((skill) => skill.ability == ability),
+    });
+  });
+
+  test('should compare abilities by index', () {
+    final a = Ability.strength;
+    final b = Ability.dexterity;
+    check(a.compareTo(b)).isLessThan(0);
+    check(b.compareTo(a)).isGreaterThan(0);
+    check(a.compareTo(a)).equals(0);
   });
 }
