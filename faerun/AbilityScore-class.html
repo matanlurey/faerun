@@ -59,6 +59,10 @@
     
 <section class="desc markdown">
   <p>Ability <a href="../faerun/AbilityScore/score.html">score</a>, or the amount of an <a href="../faerun/Ability.html">Ability</a> a character or creature has.</p>
+<p>An ability score encapsulates both the ability and the score, and provides
+a guaranteed valid range for the score, as well as a <a href="../faerun/AbilityScore/modifier.html">modifier</a> that can be
+used to calculate bonuses and penalties; for example, a score of <code>1</code> has a
+modifier of <code>-5</code>, and a score of <code>30</code> has a modifier of <code>10</code>.</p>
 <h2 id="equality">Equality</h2>
 <p>Two ability scores are considered equal if they have the same <a href="../faerun/AbilityScore/ability.html">ability</a> and
 <a href="../faerun/AbilityScore/score.html">score</a>.</p>
@@ -227,6 +231,35 @@
     
     
 
+  <section class="summary offset-anchor" id="constants">
+    <h2>Constants</h2>
+    <dl class="properties">
+        <dt id="maxScore" class="constant">
+    <span class="name "><a href="../faerun/AbilityScore/maxScore-constant.html">maxScore</a></span>
+  <span class="signature">&#8594; const <a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The maximum possible ability score.
+  
+
+</dd>
+
+        <dt id="minScore" class="constant">
+    <span class="name "><a href="../faerun/AbilityScore/minScore-constant.html">minScore</a></span>
+  <span class="signature">&#8594; const <a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The minimum possible ability score a score can normally be.
+  
+
+</dd>
+
+    </dl>
+  </section>
   </div> <!-- /.main-content -->
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
     <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->

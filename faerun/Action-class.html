@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Action class from the faerun library, for the Dart programming language.">
+  <title>Action class - faerun library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">faerun</a></li>
+    <li><a href="../faerun/faerun-library.html">faerun.dart</a></li>
+    <li class="self-crumb">Action class</li>
+  </ol>
+  <div class="self-name">Action</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="faerun&#47;faerun-library-sidebar.html"
+    data-below-sidebar="faerun&#47;Action-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Action</span> class 
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Describes doing something other than moving or communicating.</p>
+<p><a href="../faerun/Action/main-constant.html">main</a> lists the game's main actions; more can be defined with <a href="../faerun/Action/Action.html">Action.new</a>:</p>
+<pre class="language-dart"><code class="language-dart">Action('Climb');
+</code></pre>
+<p>Actions are intended to be used as a reference for what a character can do
+during their turn. They are not typically stored as part of a character's
+state but might persist in a log of actions taken during a game.</p>
+<h2 id="equality">Equality</h2>
+<p>Actions are compared based on their <a href="../faerun/Action/name.html">name</a>.</p>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://api.dart.dev/stable/3.6.0/dart-core/Comparable-class.html">Comparable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../faerun/Action-class.html">Action</a></span>&gt;</span></li>
+    </ul>
+  </dd>
+        
+
+
+        
+        
+  <dt>Annotations</dt>
+  <dd>
+    <ul class="annotation-list clazz-relationships">
+        <li>@<a href="https://pub.dev/documentation/meta/1.16.0/meta/immutable-constant.html">immutable</a></li>
+    </ul>
+  </dd>
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="Action" class="callable">
+          <span class="name"><a href="../faerun/Action/Action.html">Action</a></span><span class="signature">(<span class="parameter" id="-param-name"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a new action with the given <code>name</code>.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property">
+  <span class="name"><a href="../faerun/Action/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="name" class="property">
+  <span class="name"><a href="../faerun/Action/name.html">name</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  Name of the action.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.6.0/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="compareTo" class="callable">
+  <span class="name"><a href="../faerun/Action/compareTo.html">compareTo</a></span><span class="signature">(<wbr><span class="parameter" id="compareTo-param-other"><span class="type-annotation"><a href="../faerun/Action-class.html">Action</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Compares this object to another object.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.6.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable">
+  <span class="name"><a href="../faerun/Action/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A string representation of this object.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable">
+  <span class="name"><a href="../faerun/Action/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  The equality operator.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  <section class="summary offset-anchor" id="constants">
+    <h2>Constants</h2>
+    <dl class="properties">
+        <dt id="attack" class="constant">
+    <span class="name "><a href="../faerun/Action/attack-constant.html">attack</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Attack with a weapon or unarmed strike.
+  
+
+</dd>
+
+        <dt id="dash" class="constant">
+    <span class="name "><a href="../faerun/Action/dash-constant.html">dash</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Grant extra movement equal to your speed for the rest of the turn.
+  
+
+</dd>
+
+        <dt id="disengage" class="constant">
+    <span class="name "><a href="../faerun/Action/disengage-constant.html">disengage</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Movement doesn't provoke opportunity attacks for the rest of the turn.
+  
+
+</dd>
+
+        <dt id="dodge" class="constant">
+    <span class="name "><a href="../faerun/Action/dodge-constant.html">dodge</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Until the start of your next turn, attacks against you have
+<a href="../src_circumstance/Circumstance.html">Circumstance.disadvantage</a>.
+  
+
+</dd>
+
+        <dt id="help" class="constant">
+    <span class="name "><a href="../faerun/Action/help-constant.html">help</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Help another creature's ability check or attack roll, or administer first
+aid.
+  
+
+</dd>
+
+        <dt id="hide" class="constant">
+    <span class="name "><a href="../faerun/Action/hide-constant.html">hide</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Make a <a href="../src_ability/Ability.html">Ability.dexterity</a> (<a href="../src_skill/Skill.html">Skill.stealth</a>) check.
+  
+
+</dd>
+
+        <dt id="influence" class="constant">
+    <span class="name "><a href="../faerun/Action/influence-constant.html">influence</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Make a <a href="../src_ability/Ability.html">Ability.charisma</a> (<a href="../src_skill/Skill.html">Skill.deception</a>, <a href="../src_skill/Skill.html">Skill.intimidation</a>,
+<a href="../src_skill/Skill.html">Skill.performance</a>, or <a href="../src_skill/Skill.html">Skill.persuasion</a>) or <a href="../src_ability/Ability.html">Ability.wisdom</a>
+(<a href="../src_skill/Skill.html">Skill.animalHandling</a>) check to alter a creature's attitude.
+  
+
+</dd>
+
+        <dt id="magic" class="constant">
+    <span class="name "><a href="../faerun/Action/magic-constant.html">magic</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Cast a spell, use a magic item, or use a magical feature.
+  
+
+</dd>
+
+        <dt id="main" class="constant">
+    <span class="name "><a href="../faerun/Action/main-constant.html">main</a></span>
+  <span class="signature">&#8594; const <a href="https://api.dart.dev/stable/3.6.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../faerun/Action-class.html">Action</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  All main actions.
+  
+
+</dd>
+
+        <dt id="ready" class="constant">
+    <span class="name "><a href="../faerun/Action/ready-constant.html">ready</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Prepare to take an action in response to a trigger you define.
+  
+
+</dd>
+
+        <dt id="search" class="constant">
+    <span class="name "><a href="../faerun/Action/search-constant.html">search</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Make a <a href="../src_ability/Ability.html">Ability.wisdom</a> (<a href="../src_skill/Skill.html">Skill.insight</a>, <a href="../src_skill/Skill.html">Skill.medicine</a>,
+<a href="../src_skill/Skill.html">Skill.perception</a>, or <a href="../src_skill/Skill.html">Skill.survival</a>) check.
+  
+
+</dd>
+
+        <dt id="study" class="constant">
+    <span class="name "><a href="../faerun/Action/study-constant.html">study</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Make a <a href="../src_ability/Ability.html">Ability.intelligence</a> (<a href="../src_skill/Skill.html">Skill.arcana</a>, <a href="../src_skill/Skill.html">Skill.history</a>,
+<a href="../src_skill/Skill.html">Skill.investigation</a>, <a href="../src_skill/Skill.html">Skill.nature</a>, or <a href="../src_skill/Skill.html">Skill.religion</a>) check.
+  
+
+</dd>
+
+        <dt id="utilize" class="constant">
+    <span class="name "><a href="../faerun/Action/utilize-constant.html">utilize</a></span>
+  <span class="signature">&#8594; const <a href="../faerun/Action-class.html">Action</a></span>
+  
+
+</dt>
+<dd>
+  Use a non-magical item.
+  
+
+</dd>
+
+    </dl>
+  </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">faerun</a></li>
+    <li><a href="../faerun/faerun-library.html">faerun</a></li>
+    <li class="self-crumb">Action class</li>
+</ol>
+
+    <h5>faerun library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    faerun
+      0.0.0-unknown
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

@@ -59,6 +59,10 @@
     
 <section class="desc markdown">
   <p>A rating of the threat a monster poses to a group of four player characters.</p>
+<p>A challenge rating encapsulates the difficulty of a monster and provides
+a guaranteed valid range of values, as well as a <a href="../faerun/ChallengeRating/proficiencyBonus.html">proficiencyBonus</a> that can
+be used to calculate bonuses when an ability check should include the
+monster's proficiency bonus.</p>
 <h2 id="equality">Equality</h2>
 <p>Two challenge ratings are considered equal if their values are equal.</p>
 <h2 id="comparison">Comparison</h2>
@@ -145,6 +149,18 @@
 <dd>
   The numerator of the challenge rating.
   <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="proficiencyBonus" class="property">
+  <span class="name"><a href="../faerun/ChallengeRating/proficiencyBonus.html">proficiencyBonus</a></span>
+  <span class="signature">&#8594; <a href="../faerun/ProficiencyBonus-class.html">ProficiencyBonus</a></span>
+  
+
+</dt>
+<dd>
+  The proficiency bonus for the challenge rating.
+  <div class="features"><span class="feature">no setter</span></div>
 
 </dd>
 

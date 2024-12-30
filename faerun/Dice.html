@@ -63,6 +63,13 @@
     
 <section class="desc markdown">
   <p>Dice add randomness to the game and determine the outcome of many actions.</p>
+<p>For display and serialization purposes, each die has a unique <a href="https://api.dart.dev/stable/3.6.0/dart-core/EnumName/name.html">name</a> and
+number of <a href="../faerun/Dice/sides.html">sides</a>. The name is the same as the enum value, and the number
+of sides is the same as the enum value. Use <a href="../faerun/Dice/byName.html">byName</a> and <a href="../faerun/Dice/bySides.html">bySides</a> to
+look up dice by name or number of sides.</p>
+<h2 id="comparison">Comparison</h2>
+<p>Dice are ordered based on their number of sides, with <a href="../src_dice/Dice.html">d3</a> being the lowest
+and <a href="../src_dice/Dice.html">d100</a> being the highest.</p>
 </section>
 
 
@@ -79,6 +86,12 @@
   </dd>
 
           
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated eNum-relationships">
+        <li><a href="https://api.dart.dev/stable/3.6.0/dart-core/Comparable-class.html">Comparable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../faerun/Dice.html">Dice</a></span>&gt;</span></li>
+    </ul>
+  </dd>
           
           
   <dt>Available extensions</dt>
@@ -292,10 +305,23 @@
 
     
   <section
-      class="summary offset-anchor inherited"
+      class="summary offset-anchor"
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="compareTo" class="callable">
+  <span class="name"><a href="../faerun/Dice/compareTo.html">compareTo</a></span><span class="signature">(<wbr><span class="parameter" id="compareTo-param-other"><span class="type-annotation"><a href="../faerun/Dice.html">Dice</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Compares this object to another object.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
         <dt id="noSuchMethod" class="callable inherited">
   <span class="name"><a href="https://api.dart.dev/stable/3.6.0/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
@@ -376,6 +402,19 @@
   <section class="summary offset-anchor" id="static-methods">
     <h2>Static Methods</h2>
     <dl class="callables">
+        <dt id="byName" class="callable">
+  <span class="name"><a href="../faerun/Dice/byName.html">byName</a></span><span class="signature">(<wbr><span class="parameter" id="byName-param-name"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../faerun/Dice.html">Dice</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the dice with the given <code>name</code>.
+  
+
+</dd>
+
         <dt id="bySides" class="callable">
   <span class="name"><a href="../faerun/Dice/bySides.html">bySides</a></span><span class="signature">(<wbr><span class="parameter" id="bySides-param-sides"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">sides</span></span>)
     <span class="returntype parameter">&#8594; <a href="../faerun/Dice.html">Dice</a></span>
@@ -385,6 +424,19 @@
 </dt>
 <dd>
   Returns the dice with the given number of <code>sides</code>.
+  
+
+</dd>
+
+        <dt id="tryByName" class="callable">
+  <span class="name"><a href="../faerun/Dice/tryByName.html">tryByName</a></span><span class="signature">(<wbr><span class="parameter" id="tryByName-param-name"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../faerun/Dice.html">Dice</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the dice with the given <code>name</code>, if it exists.
   
 
 </dd>

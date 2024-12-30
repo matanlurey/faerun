@@ -63,6 +63,56 @@
     
 <section class="desc markdown">
   <p>Abilities that measure physical and mental characteristics.</p>
+<p>For example, <a href="../src_ability/Ability.html">strength</a> measures physical might:</p>
+<pre class="language-dart"><code class="language-dart">final ability = Ability.strength;
+</code></pre>
+<p>For display and serialization purposes, each ability has a unique <a href="https://api.dart.dev/stable/3.6.0/dart-core/EnumName/name.html">name</a>
+and three-letter <a href="../faerun/Ability/abbreviation.html">abbreviation</a>. The name is the same as the enum value, and
+the abbreviation is the first three letters of the name in lowercase. Use
+<a href="../faerun/Ability/byName.html">byName</a> and <a href="../faerun/Ability/byAbbreviation.html">byAbbreviation</a> to look up abilities by name or abbreviation.</p>
+<p>Tools can optionally provide additional information about each ability:</p>
+<ul>
+<li><a href="../faerun/Ability/description.html">description</a> describes what the ability measures or its purpose;</li>
+<li><a href="../faerun/Ability/checkExample.html">checkExample</a> provides an example of using the ability for a check;</li>
+<li><a href="../faerun/Ability/savingThrowExample.html">savingThrowExample</a> provides an example of using the ability for a saving
+throw.</li>
+</ul>
+<p>... or provide their own interpretation of the abilities:</p>
+<pre class="language-dart"><code class="language-dart">extension AbilityExtensions on Ability {
+  String get customText {
+    return switch (this) {
+      Ability.strength =&gt; 'Be big and strong',
+      Ability.dexterity =&gt; 'Be quick and nimble',
+      Ability.constitution =&gt; 'Be tough and healthy',
+      Ability.intelligence =&gt; 'Be smart and knowledgeable',
+      Ability.wisdom =&gt; 'Be wise and perceptive',
+      Ability.charisma =&gt; 'Be charming and confident',
+    };
+  }
+}
+</code></pre>
+<h2 id="comparison">Comparison</h2>
+<p>Abilities are ordered based on their enum value, with <a href="../src_ability/Ability.html">strength</a> being the
+lowest and <a href="../src_ability/Ability.html">charisma</a> being the highest.</p>
+<h2 id="example">Example</h2>
+<p>To get the name and abbreviation of an ability:</p>
+<pre class="language-dart"><code class="language-dart">final ability = Ability.strength;
+print(ability.name); // 'strength'
+print(ability.abbreviation); // 'str'
+</code></pre>
+<p>To get english textual descriptions and examples of using an ability:</p>
+<pre class="language-dart"><code class="language-dart">final ability = Ability.strength;
+print(ability.measures); // 'Physical might'
+print(ability.checkExample); // 'Lift, push, pull, or break something'
+print(ability.savingThrowExample); // 'Physically resist direct force'
+</code></pre>
+<p>To look up an ability by name or abbreviation:</p>
+<pre class="language-dart"><code class="language-dart">final a = Ability.byName('strength');
+print(a); // 'Ability.strength'
+
+final b = Ability.byAbbreviation('str');
+print(b); // 'Ability.strength'
+</code></pre>
 </section>
 
 
@@ -79,6 +129,12 @@
   </dd>
 
           
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated eNum-relationships">
+        <li><a href="https://api.dart.dev/stable/3.6.0/dart-core/Comparable-class.html">Comparable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../faerun/Ability.html">Ability</a></span>&gt;</span></li>
+    </ul>
+  </dd>
           
           
   <dt>Available extensions</dt>
@@ -104,6 +160,9 @@
   <p>Physical might.</p>
   
 
+    <div>
+      <span class="signature"><code>const Ability(description: &#39;Physical might&#39;, checkExample: &#39;Lift, push, pull, or break something&#39;, savingThrowExample: &#39;Physically resist direct force&#39;)</code></span>
+    </div>
 </dd>
 
             <dt id="dexterity" class="constant">
@@ -116,6 +175,9 @@
   <p>Agility, reflexes, and balance.</p>
   
 
+    <div>
+      <span class="signature"><code>const Ability(description: &#39;Agility, reflexes, and balance&#39;, checkExample: &#39;Move nimbly, quickly, or quietly&#39;, savingThrowExample: &#39;Dodge out of harm’s way&#39;)</code></span>
+    </div>
 </dd>
 
             <dt id="constitution" class="constant">
@@ -128,6 +190,9 @@
   <p>Health and stamina.</p>
   
 
+    <div>
+      <span class="signature"><code>const Ability(description: &#39;Health and stamina&#39;, checkExample: &#39;Push your body beyond normal limits&#39;, savingThrowExample: &#39;Endure a toxic hazard&#39;)</code></span>
+    </div>
 </dd>
 
             <dt id="intelligence" class="constant">
@@ -140,6 +205,9 @@
   <p>Reasoning and memory.</p>
   
 
+    <div>
+      <span class="signature"><code>const Ability(description: &#39;Reasoning and memory&#39;, checkExample: &#39;Reason or remember&#39;, savingThrowExample: &#39;Recognize an illusion as fake&#39;)</code></span>
+    </div>
 </dd>
 
             <dt id="wisdom" class="constant">
@@ -152,6 +220,9 @@
   <p>Perceptiveness and mental fortitude.</p>
   
 
+    <div>
+      <span class="signature"><code>const Ability(description: &#39;Perceptiveness and mental fortitude&#39;, checkExample: &#39;Notice things in the environment or in creatures’ behavior&#39;, savingThrowExample: &#39;Resist a mental a…</code></span>
+    </div>
 </dd>
 
             <dt id="charisma" class="constant">
@@ -164,6 +235,9 @@
   <p>Confidence, poise, and charm.</p>
   
 
+    <div>
+      <span class="signature"><code>const Ability(description: &#39;Confidence, poise, and charm&#39;, checkExample: &#39;Influence, entertain, or deceive&#39;, savingThrowExample: &#39;Assert your identity&#39;)</code></span>
+    </div>
 </dd>
 
         </dl>
@@ -182,8 +256,32 @@
 
 </dt>
 <dd>
-  Three-letter abbreviation of the ability, in lowercase.
+  Three-letter abbreviation of the ability.
   <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="checkExample" class="property">
+  <span class="name"><a href="../faerun/Ability/checkExample.html">checkExample</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A description of what an ability check might use this ability for.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="description" class="property">
+  <span class="name"><a href="../faerun/Ability/description.html">description</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A description of what the ability measures, or its purpose.
+  <div class="features"><span class="feature">final</span></div>
 
 </dd>
 
@@ -239,6 +337,30 @@
 
 </dd>
 
+        <dt id="savingThrowExample" class="property">
+  <span class="name"><a href="../faerun/Ability/savingThrowExample.html">savingThrowExample</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A description of what a savings throw might use this ability for.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="skills" class="property">
+  <span class="name"><a href="../faerun/Ability/skills.html">skills</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../faerun/Skill.html">Skill</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  Skill checks that use this ability.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
     </dl>
   </section>
 
@@ -248,16 +370,16 @@
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="call" class="callable">
-  <span class="name"><a href="../faerun/Ability/call.html">call</a></span><span class="signature">(<wbr><span class="parameter" id="call-param-score"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span> <span class="parameter-name">score</span></span>)
-    <span class="returntype parameter">&#8594; <a href="../faerun/AbilityScore-class.html">AbilityScore</a></span>
+        <dt id="compareTo" class="callable">
+  <span class="name"><a href="../faerun/Ability/compareTo.html">compareTo</a></span><span class="signature">(<wbr><span class="parameter" id="compareTo-param-other"><span class="type-annotation"><a href="../faerun/Ability.html">Ability</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.6.0/dart-core/int-class.html">int</a></span>
   </span>
   
 
 </dt>
 <dd>
-  Creates an ability score for this ability with the given <code>score</code>.
-  
+  Compares this object to another object.
+  <div class="features"><span class="feature">override</span></div>
 
 </dd>
 
@@ -336,7 +458,7 @@
 
 </dt>
 <dd>
-  Returns the ability with the given <code>name</code>, which must exist.
+  Returns the ability with the given <code>name</code>.
   
 
 </dd>

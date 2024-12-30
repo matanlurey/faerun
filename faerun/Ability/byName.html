@@ -66,7 +66,12 @@
     </section>
     
 <section class="desc markdown">
-  <p>Returns the ability with the given <code>name</code>, which must exist.</p>
+  <p>Returns the ability with the given <code>name</code>.</p>
+<p><code>name</code> must be the exact name of an ability, such as <code>'strength'</code> or
+<code>'charisma'</code>, or an error is thrown.</p>
+<p>If you are unsure whether the name is valid, such as when the name comes
+from user input or an external source, use <a href="../../faerun/Ability/tryByName.html">tryByName</a> instead which
+returns <code>null</code> if the name is invalid.</p>
 </section>
 
 

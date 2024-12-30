@@ -70,12 +70,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory ProficiencyBonus.fromChallengeRating(ChallengeRating rating) {
-  final value = rating.value;
-  return switch (value) {
-    &lt;= 4 =&gt; ProficiencyBonus(2),
-    &gt;= 29 =&gt; ProficiencyBonus(9),
-    _ =&gt; ProficiencyBonus((value - 1) ~&#47; 4 + 2),
-  };
+  return ProficiencyBonus._fromLevelOrChallengeValue(rating.value.floor());
 }</code></pre>
 </section>
 

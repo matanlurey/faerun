@@ -67,6 +67,12 @@
     
 <section class="desc markdown">
   <p>Returns the ability with the given <code>abbreviation</code>, which must exist.</p>
+<p><code>abbreviation</code> must be the three-letter abbreviation of an ability, such
+as <code>'str'</code> or <code>'cha'</code>, or an error is thrown.</p>
+<p>If you are unsure whether the abbreviation is valid, such as when the
+abbreviation comes from user input or an external source, use
+<a href="../../faerun/Ability/tryByAbbreviation.html">tryByAbbreviation</a> instead which returns <code>null</code> if the abbreviation is
+invalid.</p>
 </section>
 
 
