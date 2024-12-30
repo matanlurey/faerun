@@ -1,4 +1,5 @@
 import 'package:faerun/src/armor_class.dart';
+import 'package:faerun/src/example.dart';
 import 'package:meta/meta.dart';
 import 'package:quirk/quirk.dart';
 
@@ -7,16 +8,9 @@ import 'package:quirk/quirk.dart';
 /// A difficulty class encapsulates the difficulty of a task and provides a
 /// guaranteed valid range of values.
 ///
-/// Examples of common difficulty classes are:
+/// ## Example
 ///
-/// Task Difficulty   | DC
-/// ------------------|---------------------------------------------------------
-/// Very Easy         | 5
-/// Easy              | 10
-/// Medium            | 15
-/// Hard              | 20
-/// Very Hard         | 25
-/// Nearly Impossible | 30
+/// Built-in [examples] are provided for common classes of difficulty.
 ///
 /// ## Equality
 ///
@@ -27,6 +21,18 @@ import 'package:quirk/quirk.dart';
 /// Difficulty classes are ordered by lowest to highest value.
 @immutable
 final class DifficultyClass implements Comparable<DifficultyClass> {
+  /// An example list of difficulty classes.
+  ///
+  /// This list is unmodifiable.
+  static const examples = [
+    Example(DifficultyClass._(5), 'Very Easy'),
+    Example(DifficultyClass._(10), 'Easy'),
+    Example(DifficultyClass._(15), 'Medium'),
+    Example(DifficultyClass._(20), 'Hard'),
+    Example(DifficultyClass._(25), 'Very Hard'),
+    Example(DifficultyClass._(30), 'Nearly Impossible'),
+  ];
+
   /// Creates a new difficulty class.
   ///
   /// The [value] must be a positive integer.

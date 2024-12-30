@@ -6,9 +6,17 @@ library;
 
 import 'package:meta/meta.dart';
 
-/// Doing something other than moving or communicating.
+/// Describes doing something other than moving or communicating.
 ///
-/// [main] lists the game's main actions; more can be defined with [Action.new].
+/// [main] lists the game's main actions; more can be defined with [Action.new]:
+///
+/// ```dart
+/// Action('Climb');
+/// ```
+///
+/// Actions are intended to be used as a reference for what a character can do
+/// during their turn. They are not typically stored as part of a character's
+/// state but might persist in a log of actions taken during a game.
 ///
 /// ## Equality
 ///

@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:faerun/faerun.dart';
 import 'package:faerun/src/skill.dart';
-import 'package:meta/meta.dart';
 
 /// Abilities that measure physical and mental characteristics.
 ///
@@ -14,6 +14,29 @@ import 'package:meta/meta.dart';
 /// and three-letter [abbreviation]. The name is the same as the enum value, and
 /// the abbreviation is the first three letters of the name in lowercase. Use
 /// [byName] and [byAbbreviation] to look up abilities by name or abbreviation.
+///
+/// Tools can optionally provide additional information about each ability:
+/// - [description] describes what the ability measures or its purpose;
+/// - [checkExample] provides an example of using the ability for a check;
+/// - [savingThrowExample] provides an example of using the ability for a saving
+///   throw.
+///
+/// ... or provide their own interpretation of the abilities:
+///
+/// ```dart
+/// extension AbilityExtensions on Ability {
+///   String get customText {
+///     return switch (this) {
+///       Ability.strength => 'Be big and strong',
+///       Ability.dexterity => 'Be quick and nimble',
+///       Ability.constitution => 'Be tough and healthy',
+///       Ability.intelligence => 'Be smart and knowledgeable',
+///       Ability.wisdom => 'Be wise and perceptive',
+///       Ability.charisma => 'Be charming and confident',
+///     };
+///   }
+/// }
+/// ```
 ///
 /// ## Comparison
 ///
@@ -30,6 +53,15 @@ import 'package:meta/meta.dart';
 /// print(ability.abbreviation); // 'str'
 /// ```
 ///
+/// To get english textual descriptions and examples of using an ability:
+///
+/// ```dart
+/// final ability = Ability.strength;
+/// print(ability.measures); // 'Physical might'
+/// print(ability.checkExample); // 'Lift, push, pull, or break something'
+/// print(ability.savingThrowExample); // 'Physically resist direct force'
+/// ```
+///
 /// To look up an ability by name or abbreviation:
 ///
 /// ```dart
@@ -42,48 +74,48 @@ import 'package:meta/meta.dart';
 enum Ability implements Comparable<Ability> {
   /// Physical might.
   strength(
-    measures: 'Physical might',
+    description: 'Physical might',
     checkExample: 'Lift, push, pull, or break something',
     savingThrowExample: 'Physically resist direct force',
   ),
 
   /// Agility, reflexes, and balance.
   dexterity(
-    measures: 'Agility, reflexes, and balance',
+    description: 'Agility, reflexes, and balance',
     checkExample: 'Move nimbly, quickly, or quietly',
     savingThrowExample: 'Dodge out of harm’s way',
   ),
 
   /// Health and stamina.
   constitution(
-    measures: 'Health and stamina',
+    description: 'Health and stamina',
     checkExample: 'Push your body beyond normal limits',
     savingThrowExample: 'Endure a toxic hazard',
   ),
 
   /// Reasoning and memory.
   intelligence(
-    measures: 'Reasoning and memory',
+    description: 'Reasoning and memory',
     checkExample: 'Reason or remember',
     savingThrowExample: 'Recognize an illusion as fake',
   ),
 
   /// Perceptiveness and mental fortitude.
   wisdom(
-    measures: 'Perceptiveness and mental fortitude',
+    description: 'Perceptiveness and mental fortitude',
     checkExample: 'Notice things in the environment or in creatures’ behavior',
     savingThrowExample: 'Resist a mental assault',
   ),
 
   /// Confidence, poise, and charm.
   charisma(
-    measures: 'Confidence, poise, and charm',
+    description: 'Confidence, poise, and charm',
     checkExample: 'Influence, entertain, or deceive',
     savingThrowExample: 'Assert your identity',
   );
 
   const Ability({
-    required this.measures,
+    required this.description,
     required this.checkExample,
     required this.savingThrowExample,
   });
@@ -147,7 +179,7 @@ enum Ability implements Comparable<Ability> {
   }
 
   /// A description of what the ability measures, or its purpose.
-  final String measures;
+  final String description;
 
   /// A description of what an ability check might use this ability for.
   final String checkExample;
@@ -167,84 +199,4 @@ enum Ability implements Comparable<Ability> {
 
   @override
   int compareTo(Ability other) => index.compareTo(other.index);
-}
-
-/// Ability [score], or the amount of an [Ability] a character or creature has.
-///
-/// An ability score encapsulates both the ability and the score, and provides
-/// a guaranteed valid range for the score, as well as a [modifier] that can be
-/// used to calculate bonuses and penalties; for example, a score of `1` has a
-/// modifier of `-5`, and a score of `30` has a modifier of `10`.
-///
-/// ## Equality
-///
-/// Two ability scores are considered equal if they have the same [ability] and
-/// [score].
-@immutable
-final class AbilityScore {
-  /// The minimum possible ability score a score can normally be.
-  ///
-  /// If an effect reduces a score to 0, that effect explains what happens.
-  static const minScore = 1;
-
-  /// The maximum possible ability score.
-  static const maxScore = 30;
-
-  /// Creates a new ability score.
-  ///
-  /// {@template faerun.AbilityScore:validScore}
-  /// The [score] must be a positive integer between 1 and 30, inclusive;
-  /// the range can be referenced for validation purposes using [minScore] and
-  /// [maxScore].
-  /// {@endtemplate}
-  factory AbilityScore(Ability ability, int score) {
-    RangeError.checkValueInInterval(score, 1, 30, 'score');
-    return AbilityScore._(ability, score);
-  }
-
-  const AbilityScore._(this.ability, this.score);
-
-  /// The ability the score is for.
-  final Ability ability;
-
-  /// Amount of an ability a character or creature has.
-  ///
-  /// The [score] must be a positive integer between 1 and 30, inclusive:
-  ///
-  /// Score      | Meaning
-  /// -----------|--------------------------------------------------------------
-  /// 1          | This is the lowest a score can normally go. If an effect reduces a score to 0, that effect explains what happens.
-  /// 2-9        | This represents a weak capability.
-  /// 10-11      | This represents the human average.
-  /// 12-19      | This represents a strong capability.
-  /// 20         | This is the highest an adventurer’s score can go unless a feature says otherwise.
-  /// 21-29      | This represents an extraordinary capability.
-  /// 30         | This is the highest a score can go.
-  final int score;
-
-  /// The modifier for the ability score.
-  ///
-  /// The modifier is calculated as `(score - 10) ~/ 2`; that is, an ability
-  /// score of `1` has a modifier of `-5`, and an ability score of `30` has a
-  /// modifier of `10`.
-  int get modifier {
-    if (score < 10) {
-      return (score - 11) ~/ 2;
-    } else {
-      return (score - 10) ~/ 2;
-    }
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is AbilityScore &&
-        ability == other.ability &&
-        score == other.score;
-  }
-
-  @override
-  int get hashCode => Object.hash(ability, score);
-
-  @override
-  String toString() => 'AbilityScore($ability, $score)';
 }

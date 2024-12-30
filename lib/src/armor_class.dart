@@ -1,4 +1,5 @@
 import 'package:faerun/src/difficulty_class.dart';
+import 'package:faerun/src/example.dart';
 import 'package:meta/meta.dart';
 import 'package:quirk/quirk.dart';
 
@@ -12,16 +13,9 @@ import 'package:quirk/quirk.dart';
 /// base AC calculation (`10 + Dexterity modifier`), but can increase their AC
 /// by armor, magic items, spells, and more.
 ///
-/// Examples of common armor classes are:
+/// ## Example
 ///
-/// Armor Type  | AC
-/// ------------|---------------------------------------------------------------
-/// Unarmored   | 10
-/// Leather     | 11
-/// Breastplate | 14
-/// Chain Mail  | 16
-/// Plate       | 18
-/// Shield      | +2
+/// Built-in [substanceExamples] are provided for objects with an inherent AC.
 ///
 /// # Equality
 ///
@@ -32,6 +26,19 @@ import 'package:quirk/quirk.dart';
 /// Armor classes are ordered by lowest to highest value.
 @immutable
 final class ArmorClass implements Comparable<ArmorClass> {
+  /// An example list of armor classes for object substances.
+  ///
+  /// This list is unmodifiable.
+  static const substanceExamples = [
+    Example(ArmorClass._(11), 'Cloth, paper, rope'),
+    Example(ArmorClass._(13), 'Crystal, glass, ice'),
+    Example(ArmorClass._(15), 'Wood'),
+    Example(ArmorClass._(17), 'Stone'),
+    Example(ArmorClass._(19), 'Iron, steel'),
+    Example(ArmorClass._(21), 'Mithral'),
+    Example(ArmorClass._(23), 'Adamanatine'),
+  ];
+
   /// Creates a new armor class.
   ///
   /// The [value] must be a positive integer.
